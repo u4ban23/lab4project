@@ -35,6 +35,7 @@ void simulateDay(int &day, int &sus, int &inf, int &rec, double &infRate, double
         cout<<"Error: newInf or newRec is less than 0"<<endl;
     }
 
+    // check if every number of person is not greater than 100
     if (newInf> sus) sus=0;
     else sus -=newInf;
     if (inf + newInf - newRec >sum) inf = sum - sus - rec;
@@ -96,10 +97,10 @@ void menu(int &day, int &sus, int &inf, int &rec, double &infRate, double &recRa
                 cout<<"Wrong choice. Type number betwenn 1 and 3."<<endl;
 
         }
-        // if (!checkPopulation(sus,inf,rec)) {
-        //     cout<<"Error: Population was changed. Expected - 100, got - "<<sus+inf+rec<<endl;
-        //     running = false;
-        // }
+        if (!checkPopulation(sus,inf,rec)) {
+            cout<<"Error: Population was changed. Expected - 100, got - "<<sus+inf+rec<<endl;
+            running = false;
+        }
     }
 }
 
