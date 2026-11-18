@@ -18,6 +18,26 @@
 
 using namespace std;
 
+void showPopulation(int &day, int &susceptible, int &infected, int &recovered);
+void simulateDay(int &day, int &sus, int &inf, int &rec, double &infRate, double &recRate, const int &sum);
+void changeParameters(double &infRate, double &recRate);
+bool checkPopulation(int &sus, int &inf, int &rec);
+void menu(int &day, int &sus, int &inf, int &rec, double &infRate, double &recRate, const int &sum);
+
+int main() {
+    int susceptible = 80;  // podatni
+    int infected = 10;     // aktualnie zarażeni
+    int recovered = 10;    // uzdrowieńcy
+    int day = 0;
+    const int sumOfPeople = susceptible + infected + recovered;
+
+    double infectionRate = 0.2;  // współczynnik zakażeń
+    double recoveryRate = 0.1;   // współczynnik wyzdrowień
+
+    menu(day, susceptible, infected, recovered, infectionRate, recoveryRate, sumOfPeople);
+
+    return 0;
+}
 
 void showPopulation(int &day, int &susceptible, int &infected, int &recovered) {
     cout<<"Day: "<<day<<endl;
@@ -102,19 +122,4 @@ void menu(int &day, int &sus, int &inf, int &rec, double &infRate, double &recRa
             running = false;
         }
     }
-}
-
-int main() {
-    int susceptible = 80;  // podatni
-    int infected = 10;     // aktualnie zarażeni
-    int recovered = 10;    // uzdrowieńcy
-    int day = 0;
-    const int sumOfPeople = susceptible + infected + recovered;
-
-    double infectionRate = 0.2;  // współczynnik zakażeń
-    double recoveryRate = 0.1;   // współczynnik wyzdrowień
-
-    menu(day, susceptible, infected, recovered, infectionRate, recoveryRate, sumOfPeople);
-
-    return 0;
 }
